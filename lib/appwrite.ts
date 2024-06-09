@@ -33,7 +33,14 @@ export const signIn = async ({ email, password }: Props) => {
       password,
     });
     const data = response.data;
-    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getCurrentUser = () => {
+  try {
   } catch (error) {
     console.log(error);
   }

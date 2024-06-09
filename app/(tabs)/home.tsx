@@ -1,16 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Link } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const home = () => {
   return (
-    <View>
+    <SafeAreaView>
       <Text>home</Text>
-      <Link href={"/sign-up"} className="p-10">
-        {" "}
-        Sign up
-      </Link>
-    </View>
+    </SafeAreaView>
   );
 };
 
