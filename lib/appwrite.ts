@@ -2,7 +2,7 @@ import axios from "axios";
 const API_URI = "https://aora-server-hfc7.onrender.com/api";
 
 interface Props {
-  username: string;
+  username?: string;
   email: string;
   password: string;
 }
@@ -10,7 +10,6 @@ interface Props {
 // Register User
 export const createUser = async ({ username, email, password }: Props) => {
   try {
-    // Making a POST request to your API
     const response = await axios.post(`${API_URI}/auth/sign-up`, {
       username,
       email,
@@ -24,5 +23,18 @@ export const createUser = async ({ username, email, password }: Props) => {
     console.log("user not created!!");
   } catch (error) {
     console.log("error in appwrite");
+  }
+};
+
+export const signIn = async ({ email, password }: Props) => {
+  try {
+    const response = await axios.post(`${API_URI}/auth/sign-in`, {
+      email,
+      password,
+    });
+    const data = response.data;
+    console.log(data);
+  } catch (error) {
+    console.log(error);
   }
 };
