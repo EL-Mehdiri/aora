@@ -45,3 +45,13 @@ export const getCurrentUser = () => {
     console.log(error);
   }
 };
+
+export const getAllPosts = async () => {
+  try {
+    const res = await axios.get(`${API_URI}/vidoes`);
+    const data = res.data;
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
