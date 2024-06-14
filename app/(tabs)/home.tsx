@@ -24,7 +24,6 @@ const home = () => {
   const [data, setData] = useState([]);
   const { user } = useGlobalContext();
 
-  console.log(posts);
   const onRefresh = async () => {
     setRefreshing(true);
     await refetch();

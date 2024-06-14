@@ -20,6 +20,7 @@ const SignIn = () => {
     const { email, password } = form;
     if (!email || !password) {
       Alert.alert("Error", "Please Fill in all the fields");
+      return;
     }
 
     setIsSubmiting(true);
