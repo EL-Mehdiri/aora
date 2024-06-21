@@ -27,8 +27,13 @@ const SignIn = () => {
 
     try {
       const result = await signIn(form);
+      if (!result._id) {
+        Alert.alert("Somthing went wrong !");
+        return;
+      }
       setIsLoggedIn(true);
       setUser(result);
+
       router.replace("/home");
     } catch (error) {
       Alert.alert("Error");

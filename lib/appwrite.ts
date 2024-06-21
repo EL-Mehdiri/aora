@@ -1,6 +1,6 @@
 import axios from "axios";
 // const API_URI = "https://aora-server-hfc7.onrender.com/api";
-const API_URI = "http://192.168.0.107:5050/api";
+const API_URI = "http://192.168.0.103:5050/api";
 
 interface Props {
   username?: string;
@@ -40,13 +40,6 @@ export const signIn = async ({ email, password }: Props) => {
   }
 };
 
-export const getCurrentUser = () => {
-  try {
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export const getAllPosts = async () => {
   try {
     const res = await axios.get(`${API_URI}/vidoes`);
@@ -56,3 +49,32 @@ export const getAllPosts = async () => {
     console.log(error);
   }
 };
+
+// Get video posts that matches search query
+export async function searchPosts(query: string) {
+  try {
+    const res = await axios.get(`${API_URI}/search/${query}`);
+    const posts = res.data;
+
+    if (!posts) throw new Error("Something went wrong");
+
+    return posts;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+export async function getUserPosts(userId: string) {
+  try {
+    const res = await axios.get(`${API_URI}/user-vidoes/${userId}`);
+    console.log(res.data);
+
+    const posts = res.data;
+
+    if (!posts) throw new Error("Something went wrong");
+
+    return posts;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
