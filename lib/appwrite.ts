@@ -1,6 +1,6 @@
 import axios from "axios";
 // const API_URI = "https://aora-server-hfc7.onrender.com/api";
-const API_URI = "http://192.168.0.103:5050/api";
+const API_URI = "http://192.168.100.12:5050/api";
 
 interface Props {
   username?: string;
@@ -12,7 +12,8 @@ interface VidoeProps {
   title: String;
   video: null;
   thumbnail: null;
-  prompt: "";
+  prompt: String;
+  userId: String;
 }
 
 // Register User
@@ -74,7 +75,6 @@ export async function searchPosts(query: string) {
 export async function getUserPosts(userId: string) {
   try {
     const res = await axios.get(`${API_URI}/user-vidoes/${userId}`);
-    console.log(res.data);
 
     const posts = res.data;
 
@@ -92,19 +92,24 @@ export const createVideoPost = async ({
   video,
   thumbnail,
   prompt,
+  userId,
 }: VidoeProps) => {
   try {
-    const response = await axios.post(`${API_URI}/auth/sign-up`, {
-      username,
-      email,
-      password,
+    const response = await axios.post(`${API_URI}/create-vidoe`, {
+      title,
+      video: video?.uri,
+      thumbnail: thumbnail?.uri,
+      prompt,
+      userId,
     });
     const data = response.data;
+    console.log(data);
 
     if (data._id) {
-      console.log("user is created");
+      console.log("poste is created", data);
+      return data;
     }
-    console.log("user not created!!");
+    return data;
   } catch (error) {
     console.log("error in appwrite");
   }

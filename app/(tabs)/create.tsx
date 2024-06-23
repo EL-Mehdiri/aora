@@ -44,7 +44,6 @@ const Create = () => {
           ...form,
           thumbnail: result.assets[0],
         });
-        console.log(form.thumbnail);
       }
 
       if (selectType === "video") {
@@ -70,13 +69,11 @@ const Create = () => {
       return Alert.alert("Please provide all fields");
     }
 
-    console.log(form);
-
     setUploading(true);
     try {
       await createVideoPost({
         ...form,
-        userId: user.$id,
+        userId: user._id,
       });
 
       Alert.alert("Success", "Post uploaded successfully");
