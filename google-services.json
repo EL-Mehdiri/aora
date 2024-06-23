@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "722661180094",
+    "project_id": "aora-bf647",
+    "storage_bucket": "aora-bf647.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722661180094:android:049ee682b9c11441b514ef",
+        "android_client_info": {
+          "package_name": "com.ridmani.aura"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCI9x_W9C0nXuwB8oA2uHMZ85BwZrNrm38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

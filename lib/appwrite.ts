@@ -97,8 +97,8 @@ export const createVideoPost = async ({
   try {
     const response = await axios.post(`${API_URI}/create-vidoe`, {
       title,
-      video: video?.uri,
-      thumbnail: thumbnail?.uri,
+      video: video.uri,
+      thumbnail: thumbnail.uri,
       prompt,
       userId,
     });
