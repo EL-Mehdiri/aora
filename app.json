@@ -20,7 +20,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "rid-aora"
+      "package": "com.ridmani.aora"
     },
     "web": {
       "bundler": "metro",
