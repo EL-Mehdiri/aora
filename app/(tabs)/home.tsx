@@ -40,10 +40,8 @@ const home = () => {
             title={item.title}
             thumbnail={item.thumbnail}
             video={item.video}
-            creator={"mehdi"}
-            avatar={
-              "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg"
-            }
+            creator={user?.username}
+            avatar={user?.profilePicture}
           />
         )}
         ListHeaderComponent={() => (

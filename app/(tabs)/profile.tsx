@@ -1,6 +1,12 @@
 import { router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { View, Image, FlatList, TouchableOpacity } from "react-native";
+import {
+  View,
+  Image,
+  FlatList,
+  TouchableOpacity,
+  RefreshControl,
+} from "react-native";
 
 import { icons } from "../../constants";
 import useAppwrite from "../../lib/useAppwrite";
@@ -9,13 +15,18 @@ import { useGlobalContext } from "../../context/GlobalProvider";
 import VideoCard from "@/components/VidoeCard";
 import EmptyState from "@/components/EmptyState";
 import InfoBox from "@/components/InfoBox";
-import React from "react";
+import React, { useState } from "react";
 
 const Profile = () => {
+  const [refreshing, setRefreshing] = useState(false);
   const { user, setUser, setIsLoggedIn } = useGlobalContext();
-  const { data: posts } = useAppwrite(() => getUserPosts(user._id));
+  const { data: posts, refetch } = useAppwrite(() => getUserPosts(user._id));
 
-  console.log(user._id);
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refetch();
+    setRefreshing(false);
+  };
 
   const logout = async () => {
     // await signOut();
@@ -89,6 +100,9 @@ const Profile = () => {
             </View>
           </View>
         )}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
       />
     </SafeAreaView>
   );
