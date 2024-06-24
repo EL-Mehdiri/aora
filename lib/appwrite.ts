@@ -1,6 +1,6 @@
 import axios from "axios";
 // const API_URI = "https://aora-server-hfc7.onrender.com/api";
-const API_URI = "http://192.168.100.12:5050/api";
+const API_URI = "http://192.168.100.23:5050/api";
 
 interface Props {
   username?: string;
